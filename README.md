@@ -26,20 +26,7 @@ Official implementation of my Master's thesis *"Research on Remote Sensing Image
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────┐
-│                    DTPNet Pipeline                    │
-├─────────────────────────────────────────────────────┤
-│                                                       │
-│   T1 Image ──► DINOv2 + DLP ──┐                       │
-│                                ├──► TDA T ──► BAN     │
-│   T2 Image ──► DINOv2 + DLP ──┘    (Diff       Mask  │
-│    (frozen)    (learnable         Attention)  Decoder)│
-│               prompts)                                │
-│                                          ↓            │
-│                                    Change Map         │
-└─────────────────────────────────────────────────────┘
-```
+![DTPNet Architecture](assets/architecture.png)
 
 - **Encoder**: Frozen DINOv2 ViT-B/14 + Per-layer learnable prompt tokens (DLP)
 - **Decoder**: 3-layer Temporal Difference Attention Transformer (TDA T) with SwiGLU FFN
